@@ -1,0 +1,17 @@
+{
+  "name": "js-express-learning",
+  "version": "1.0.0",
+  "description": "JavaScript & Express.js hands-on learning curriculum with exercises and a working web server",
+  "main": "03_express_sfcc/app.js",
+  "scripts": {
+    "start": "node 03_express_sfcc/app.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ejs": "^3.1.10"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

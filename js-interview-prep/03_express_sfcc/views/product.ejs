@@ -1,0 +1,108 @@
+<%- include('layout-header', { activePage: 'product', title: product ? product.name : 'Product Not Found' }) %>
+
+<% if (!product) { %>
+    <div class="alert alert-danger">
+        <strong>Error:</strong> Product could not be resolved in the catalog.
+    </div>
+    <div class="card">
+        <h2>Invalid Product Request</h2>
+        <p>The product code you requested does not exist or our services could not retrieve it. Standard SFCC pipelines handle this by redirecting to a 404 landing page or triggering an error log.</p>
+        <a href="/" class="btn">Back to Home</a>
+    </div>
+<% } else { %>
+
+    <!-- Route-Append Promotion Banner Simulation -->
+    <!-- Mimics server.append() injecting promotion data into template context (res.locals.promo) -->
+    <% if (locals.promo) { %>
+        <div style="background: linear-gradient(135deg, #1e3a8a, #3b82f6); border: 1px solid #60a5fa; color: #fff; padding: 1rem 1.5rem; border-radius: 12px; margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);">
+            <div>
+                <span class="badge" style="background: rgba(255, 255, 255, 0.2); color: #fff; margin-bottom: 4px;">Exclusive Offer</span>
+                <h4 style="font-size: 1.1rem; font-weight: 600;"><%= promo.title %></h4>
+                <p style="margin: 0; font-size: 0.85rem; color: #dbeafe;"><%= promo.description %></p>
+            </div>
+            <span style="font-size: 1.3rem; font-weight: 700; color: #facc15;"><%= promo.discountText %></span>
+        </div>
+    <% } %>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start;">
+        
+        <!-- Mock Product Image/Box -->
+        <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--card-border); border-radius: 16px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; position: relative;">
+            <div style="text-align: center; padding: 2rem;">
+                <div style="font-size: 5rem; line-height: 1; margin-bottom: 1rem; opacity: 0.85;">🥾</div>
+                <h3 style="color: var(--text-color);"><%= product.name %></h3>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Style #<%= product.id %></span>
+            </div>
+            
+            <% if (product.isFallback) { %>
+                <div style="position: absolute; top: 12px; right: 12px;">
+                    <span class="badge badge-warning" title="API connection down. Showing cached pricing.">Offline Price</span>
+                </div>
+            <% } %>
+        </div>
+
+        <!-- Product Purchase Information -->
+        <div class="card" style="margin: 0;">
+            <span class="badge <%= product.inStock ? 'badge-success' : 'badge-danger' %>" style="margin-bottom: 8px;">
+                <%= product.inStock ? 'Available' : 'Out of Stock' %>
+            </span>
+            
+            <h1 style="font-size: 1.8rem; margin-bottom: 0.5rem;"><%= product.name %></h1>
+            
+            <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 1.5rem;">
+                <span style="font-size: 1.8rem; font-weight: 700; color: #fff;">$<%= product.price %></span>
+                <% if (product.isFallback) { %>
+                    <span style="font-size: 0.8rem; color: var(--warning);">(ERP offline, cached price applied)</span>
+                <% } %>
+            </div>
+
+            <p style="margin-bottom: 1.5rem;"><%= product.description ?? "Crafted with durable full-grain leather, Norwegian welt construction, and a slip-resistant outsole. Engineered for stability and long-lasting durability in demanding conditions." %></p>
+            
+            <div style="border-top: 1px solid var(--card-border); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 10px;">
+                <div>
+                    <strong>Inventory Status:</strong>
+                    <span style="color: <%= product.stockCount < 5 ? 'var(--warning)' : 'var(--text-color)' %>">
+                        <%= product.stockCount < 5 ? 'Only ' + product.stockCount + ' left!' : 'In Stock (' + product.stockCount + ' units)' %>
+                    </span>
+                </div>
+                <div>
+                    <strong>Leather:</strong> Amber Harness Leather
+                </div>
+                <div>
+                    <strong>Sole:</strong> Vibram® Lug sole
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <button class="btn" style="width: 100%;" <%= !product.inStock ? 'disabled' : '' %>>
+                    <%= product.inStock ? 'Add to Shopping Cart' : 'Temporarily Out of Stock' %>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Troubleshooting simulator logs -->
+    <div style="margin-top: 3rem;">
+        <h3 style="margin-bottom: 0.5rem;">Server-Side Transaction Log</h3>
+        <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">When you requested this page, the controller executed this middleware lifecycle footprint:</p>
+        <div class="console-log">
+            <div class="console-line console-success">[HTTP] GET /product/<%= product.id %> - 200 OK</div>
+            <div class="console-line">[Controller] Initiated Product-Show controller execution.</div>
+            <div class="console-line">[Service] Connected to mock inventory database. Stock level resolved: <%= product.stockCount %> items.</div>
+            <% if (product.isFallback) { %>
+                <div class="console-line console-warn">[Warning] ERP system timed out. Resolved pricing from local cache (Fallback active).</div>
+            <% } else { %>
+                <div class="console-line">[Service] ERP database returned price successfully.</div>
+            <% } %>
+            <% if (locals.promo) { %>
+                <div class="console-line console-success">[Append] Route appended successfully: Injected promotional content into template context.</div>
+            <% } %>
+        </div>
+    </div>
+
+<% } %>
+
+<%- include('includes/newsletter') %>
+
+<%- include('layout-footer') %>
