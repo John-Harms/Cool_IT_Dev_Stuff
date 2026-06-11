@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Base Shell - Serene Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@400;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#0d1c2d",
+              "on-secondary-container": "#556477",
+              "secondary-fixed-dim": "#b9c8de",
+              background: "#f7f9fb",
+              "tertiary-fixed": "#a6f4b5",
+              "outline-variant": "#c5c6cd",
+              "on-tertiary": "#ffffff",
+              "surface-bright": "#f7f9fb",
+              "on-tertiary-container": "#559f67",
+              "surface-container": "#eceef0",
+              "error-container": "#ffdad6",
+              "surface-container-highest": "#e0e3e5",
+              "surface-tint": "#545f73",
+              surface: "#f7f9fb",
+              secondary: "#516072",
+              outline: "#75777d",
+              "on-surface": "#191c1e",
+              "surface-dim": "#d8dadc",
+              "inverse-primary": "#bcc7de",
+              "surface-variant": "#e0e3e5",
+              "primary-container": "#1e293b",
+              "on-background": "#191c1e",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#2d3133",
+              primary: "#091426",
+              "on-primary-fixed": "#111c2d",
+              "tertiary-container": "#003013",
+              "on-primary-container": "#8590a6",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed-variant": "#005226",
+              "on-secondary-fixed-variant": "#39485a",
+              "primary-fixed": "#d8e3fb",
+              "on-error-container": "#93000a",
+              "secondary-container": "#d2e1f7",
+              "on-surface-variant": "#45474c",
+              "tertiary-fixed-dim": "#8bd79b",
+              "surface-container-high": "#e6e8ea",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#3c475a",
+              "inverse-on-surface": "#eff1f3",
+              "primary-fixed-dim": "#bcc7de",
+              error: "#ba1a1a",
+              tertiary: "#001907",
+              "surface-container-low": "#f2f4f6",
+              "secondary-fixed": "#d4e4fa",
+              "on-tertiary-fixed": "#00210b",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              "margin-mobile": "24px",
+              "container-max": "1120px",
+              "margin-desktop": "64px",
+              "section-gap": "128px",
+              gutter: "32px",
+              unit: "8px",
+            },
+            fontFamily: {
+              "display-lg-mobile": ["Playfair Display"],
+              "label-caps": ["Inter"],
+              "headline-md": ["Playfair Display"],
+              "display-lg": ["Playfair Display"],
+              "body-md": ["Inter"],
+              "headline-sm": ["Playfair Display"],
+              "body-lg": ["Inter"],
+            },
+            fontSize: {
+              "display-lg-mobile": [
+                "40px",
+                { lineHeight: "1.2", fontWeight: "700" },
+              ],
+              "label-caps": [
+                "12px",
+                {
+                  lineHeight: "1.0",
+                  letterSpacing: "0.1em",
+                  fontWeight: "600",
+                },
+              ],
+              "headline-md": ["32px", { lineHeight: "1.3", fontWeight: "600" }],
+              "display-lg": [
+                "64px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-sm": ["24px", { lineHeight: "1.4", fontWeight: "600" }],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+            },
+          },
+        },
+      };
+    </script>
+
+    <script>
+      // Client-side interceptor logic
+      document.addEventListener("DOMContentLoaded", () => {
+        const updateNavHighlight = (activeUrl) => {
+          // Define active and inactive class arrays
+          const activeClasses = [
+            "text-primary",
+            "dark:text-primary-fixed",
+            "border-b-2",
+            "border-primary",
+            "pb-1",
+          ];
+          const inactiveClasses = [
+            "text-secondary",
+            "dark:text-secondary-fixed-dim",
+          ];
+
+          document.querySelectorAll(".nav-bar-button").forEach((link) => {
+            const targetUrl = link.getAttribute("href");
+
+            if (targetUrl === activeUrl) {
+              // Add active styles, remove inactive styles
+              link.classList.add(...activeClasses);
+              link.classList.remove(...inactiveClasses);
+            } else {
+              // Remove active styles, add inactive styles
+              link.classList.remove(...activeClasses);
+              link.classList.add(...inactiveClasses);
+            }
+          });
+        };
+
+        // A delegated click handler on the document
+        document.addEventListener("click", async (e) => {
+          // Find the closest parent <a> that has the class 'nav-button'
+          const link = e.target.closest(".nav-button");
+          if (!link) return; // Not a nav button click, ignore
+          e.preventDefault(); // Stop standard browser behavior
+          const targetUrl = link.getAttribute("href");
+          try {
+            let currentURL = window.location.pathname;
+            if (currentURL == "/") {
+              currentURL = "/home";
+            }
+            console.log(currentURL);
+            if (currentURL != targetUrl) {
+              const response = await fetch(`${targetUrl}?ajax=true`);
+              if (!response.ok) throw new Error("Failed to load segment");
+
+              const htmlFragment = await response.text();
+
+              // Swap out the content
+              document.getElementById("main-content").innerHTML = htmlFragment;
+
+              // Update the browser URL without reloading the page
+              history.pushState(null, "", targetUrl);
+
+              updateNavHighlight(targetUrl);
+
+              window.scrollTo(0, 0);
+            }
+          } catch (err) {
+            console.error(err);
+          }
+        });
+      });
+      // Handle browser Back/Forward buttons smoothly
+      window.addEventListener("popstate", () => {
+        window.location.reload(); // Simplest fix for back-button sync, or re-fetch content based on window.location
+      });
+    </script>
+
+    <style>
+      body {
+        background-color: #f7f9fb;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .alpine-bg {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        overflow: hidden;
+        opacity: 0.2;
+      }
+      .sun {
+        position: absolute;
+        bottom: 30%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #ff7e5f 0%, #feb47b 100%);
+        filter: blur(20px);
+        opacity: 0.8;
+        animation: pulse 10s infinite alternate;
+      }
+      @keyframes pulse {
+        0% {
+          transform: translateX(-50%) scale(1);
+          filter: blur(20px);
+          opacity: 0.8;
+        }
+        100% {
+          transform: translateX(-50%) scale(1.1);
+          filter: blur(30px);
+          opacity: 0.6;
+        }
+      }
+      .mountain {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 40%;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23bcc7de' fill-opacity='0.2' d='M0,256L48,229.3C96,203,192,149,288,154.7C384,160,480,224,576,218.7C672,213,768,139,864,128C960,117,1056,171,1152,197.3C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3Cpath fill='%23bcc7de' fill-opacity='0.4' d='M0,192L48,208C96,224,192,256,288,256C384,256,480,224,576,208C672,192,768,192,864,208C960,224,1056,256,1152,245.3C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+        background-size: cover;
+        background-position: bottom;
+        background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+  <body
+    class="font-body-md text-body-md text-on-surface antialiased selection:bg-tertiary-fixed selection:text-tertiary-container flex flex-col"
+  >
+    <!-- Fixed Background -->
+    <div class="alpine-bg">
+      <svg
+        class="absolute overflow-visible top-32 right-[-10%] md:right-[5%] w-[120%] md:w-[70%] h-[600px]"
+        preserveaspectratio="xMidYMid meet"
+        viewbox="0 0 1000 500"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <filter
+            height="200%"
+            id="neonOrangeGlow"
+            width="200%"
+            x="-50%"
+            y="-50%"
+          >
+            <fegaussianblur
+              in="SourceGraphic"
+              result="blur1"
+              stddeviation="4"
+            ></fegaussianblur>
+            <fegaussianblur
+              in="SourceGraphic"
+              result="blur2"
+              stddeviation="8"
+            ></fegaussianblur>
+            <femerge>
+              <femergenode in="blur2"></femergenode>
+              <femergenode in="blur1"></femergenode>
+              <femergenode in="SourceGraphic"></femergenode>
+            </femerge>
+          </filter>
+        </defs>
+        <!-- Sun -->
+        <g transform="translate(-100, 0)">
+          <g transform="translate(450, 150)">
+            <!-- Rays -->
+            <g
+              filter="url(#neonOrangeGlow)"
+              stroke="#ff5500"
+              stroke-linecap="round"
+              stroke-width="3"
+            >
+              <line x1="0" x2="0" y1="-45" y2="-70"></line>
+              <line x1="0" x2="0" y1="45" y2="70"></line>
+              <line x1="-45" x2="-70" y1="0" y2="0"></line>
+              <line x1="45" x2="70" y1="0" y2="0"></line>
+              <line x1="-32" x2="-49" y1="-32" y2="-49"></line>
+              <line x1="32" x2="49" y1="32" y2="49"></line>
+              <line x1="-32" x2="-49" y1="32" y2="49"></line>
+              <line x1="32" x2="49" y1="-32" y2="-49"></line>
+            </g>
+            <!-- Core -->
+            <circle
+              cx="0"
+              cy="0"
+              fill="#000000"
+              filter="url(#neonOrangeGlow)"
+              r="30"
+              stroke="#ff5500"
+              stroke-width="2"
+            ></circle>
+            <circle cx="0" cy="0" fill="#000000" r="30"></circle>
+          </g>
+          <!-- Mountains -->
+          <g
+            fill="none"
+            stroke="#1e293b"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          >
+            <polyline
+              points="0,400 150,400 350,250 450,330 550,180 700,350 850,280 1000,400"
+            ></polyline>
+            <polyline
+              points="200,400 400,280 480,350 600,220 750,380 900,320 1000,400"
+            ></polyline>
+            <!-- Base Line -->
+            <line x1="-75" x2="1000" y1="400" y2="400"></line>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <!-- Top Navigation Bar -->
+    <header
+      class="fixed top-0 w-full z-50 bg-background/80 dark:bg-background/80 backdrop-blur-xl border-b border-outline/20 shadow-sm flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full"
+    >
+      <div
+        class="font-display-lg text-headline-sm tracking-tighter text-primary dark:text-primary-fixed"
+      >
+        SERENE
+      </div>
+      <nav class="hidden md:flex gap-unit items-center">
+        <a
+          class="nav-bar-button font-body-md text-body-md transition-colors duration-300 cursor-pointer transition-all duration-200 active:scale-95 nav-button <%= currentView === 'home.ejs' ? 'text-primary dark:text-primary-fixed border-b-2 border-primary pb-1' : 'text-secondary dark:text-secondary-fixed-dim' %>"
+          href="/home"
+          >Home</a
+        >
+        <a
+          class="nav-bar-button font-body-md text-body-md transition-colors duration-300 cursor-pointer transition-all duration-200 active:scale-95 nav-button <%= currentView === 'resume.ejs' ? 'text-primary dark:text-primary-fixed border-b-2 border-primary pb-1' : 'text-secondary dark:text-secondary-fixed-dim' %>"
+          href="/resume"
+          >Resume</a
+        >
+      </nav>
+      <a
+        class="bg-tertiary-container text-on-tertiary font-label-caps text-label-caps px-4 py-2 rounded hover:bg-tertiary transition-colors duration-300"
+        href="#bottom"
+      >
+        Connect
+      </a>
+    </header>
+    <!-- Main Content Area (Central Container) -->
+    <main
+      class="flex-grow pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full relative z-10 flex flex-col justify-center min-h-[716px]"
+      id="main-content"
+    >
+      <%- include (currentView ?? 'Loading!') %>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="w-full bg-surface-container-lowest dark:bg-background border-t border-outline/10 flex flex-col md:flex-row justify-between items-center py-gutter px-margin-mobile md:px-margin-desktop gap-unit relative z-10 mt-auto"
+      id="bottom"
+    >
+      <p
+        class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim text-center md:text-left"
+      >
+        johnharms0404@gmail.com
+      </p>
+      <div class="flex gap-4">
+        <a
+          class="font-label-caps text-label-caps text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors"
+          href="#"
+          >LinkedIn</a
+        >
+        <a
+          class="font-label-caps text-label-caps text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors"
+          href="#"
+          >GitHub</a
+        >
+      </div>
+    </footer>
+  </body>
+  <script>
+    // Handle smooth scrolling for all anchor links (including dynamically loaded ones)
+    document.addEventListener("click", (e) => {
+      const anchor = e.target.closest('a[href^="#"]');
+      if (anchor) {
+        const targetId = anchor.getAttribute("href").slice(1);
+        if (targetId) {
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            targetEl.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      }
+    });
+  </script>
+</html>

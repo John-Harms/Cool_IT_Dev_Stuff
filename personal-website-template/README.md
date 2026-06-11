@@ -96,6 +96,65 @@ personal-website-template/
 └── server.js            # Entry point of your application
 ```
 
+### 📂 Directory Breakdown & Separation of Concerns
+
+This directory structure implements the **Model-View-Controller (MVC)** design pattern. It enforces a **Separation of Concerns (SoC)**, ensuring that data storage logic, user interface layouts, and application flow/routes are kept isolated from one another.
+
+Here is what each folder should contain and why they are separated:
+
+1. **`config/`**
+   * **What it contains:** Database connection setups (e.g. database connection pools or ORM/ODM setups), third-party API clients, and application-wide environments configuration.
+   * **Why it works:** Centralizing configuration prevents repeating connection strings and credential logic. If you switch databases or update keys, you only edit code in one place.
+
+2. **`models/` (The "M" in MVC)**
+   * **What it contains:** The definitions of your database schemas, tables, and validation rules (e.g., `User.js`, `Project.js`).
+   * **Why it works:** Models encapsulate the structure and state of your data. Keeping them isolated prevents database queries or validations from cluttering your page layouts or route handlers.
+
+3. **`views/` (The "V" in MVC)**
+   * **What it contains:** Your HTML template files (in this case, EJS templates, layouts, and reusable components like headers or footers).
+   * **Why it works:** Views handle the user interface (UI). By isolating them, you can redesign page layouts or switch templates entirely without risking modifications to data storage or request routing.
+
+4. **`controllers/` (The "C" in MVC)**
+   * **What it contains:** The business logic functions that receive HTTP requests, fetch/manipulate data using models, and return appropriate responses (rendering a view page or returning API JSON data).
+   * **Why it works:** Controllers act as the glue or bridge. They keep the core logic out of route files and layout files, resolving questions like "what data does this page need to render?"
+
+5. **`routes/`**
+   * **What it contains:** File definitions that map specific URLs and HTTP methods (e.g., `GET /login`, `POST /login`) to the corresponding controller handler functions.
+   * **Why it works:** It acts as a table of contents or router address book. It is easy to check at a glance which URL patterns are supported by your web app, keeping entry files like `server.js` short and clean.
+
+6. **`public/`**
+   * **What it contains:** Static front-end assets served directly to the browser (stylesheets, browser JavaScript files, favicon, icons, images, and audio/video files).
+   * **Why it works:** It keeps static files separated from server-rendered dynamic files. Express can serve assets in `public/` directly, optimizing asset loading times.
+
+---
+
+### 🏷 Naming Conventions & Why They Work
+
+Structuring your directory is only half the battle; establishing clear naming conventions makes the codebase predictable and easy to navigate:
+
+1. **Plural Directory Names (`controllers/`, `models/`, `routes/`, `views/`)**
+   * **Convention:** Lowercase, plural nouns.
+   * **Why it works:** These directories hold collections of files. Standardizing on plural names distinguishes them from utility or configuration directories like `config/` or `public/` which are singular conceptual buckets.
+
+2. **Models in PascalCase & Singular (`User.js`)**
+   * **Convention:** Capitalized first letter, singular form.
+   * **Why it works:** In Object-Oriented Programming and database schemas, models represent a blueprint (a Class) for a single entity (representing a single row/document). Instantiating a new entity looks like `const user = new User()`. Singular PascalCase maps directly to class instantiation.
+
+3. **Controllers with a Suffix (`homeController.js`, `authController.js`)**
+   * **Convention:** camelCase, suffixed with `Controller.js`.
+   * **Why it works:** It prevents namespace collisions and search confusion. If you have a `User` model, a `users` route, and a `userController`, you can instantly identify each file in your code editor's fuzzy search by its suffix.
+
+4. **Routes in Lowercase/Plural (`auth.js`, `users.js`)**
+   * **Convention:** Lowercase, typically matching the API endpoint resource name.
+   * **Why it works:** They directly correlate to the web URLs (e.g. `/auth/login`, `/users/profile`). Using lowercase prevents casing issues when deploying to case-sensitive filesystems (like Linux staging/production servers) from case-insensitive ones (like macOS or Windows dev machines).
+
+5. **Views Organization (`views/layouts/`, `views/partials/`, `views/pages/`)**
+   * **Convention:** Lowercase, structured by their template role.
+     * **`layouts/`** holds the structural wrappers (header/footer blocks).
+     * **`partials/`** holds modular, reusable components (e.g., footer, navigation menu).
+     * **`pages/`** holds page-specific content.
+   * **Why it works:** It prevents the root `views` directory from becoming cluttered, and makes it clear which views are full pages versus reusable components.
+
 ---
 
 ## 🛠 Simple Entry Point Example (`server.js`)

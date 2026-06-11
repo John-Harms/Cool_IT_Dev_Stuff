@@ -1,0 +1,90 @@
+<!-- Hero Section -->
+<section class="mb-section-gap animate-fade-in-up">
+  <div class="max-w-3xl">
+    <h1 class="font-display-lg text-display-lg text-primary mb-6">
+      Welcome to<br />
+      Harmswhey.
+    </h1>
+    <p class="font-body-lg text-body-lg text-secondary max-w-2xl">
+      Check out some of the things I do when I'm bored!
+    </p>
+    <div class="mt-12 flex gap-4">
+      <a
+        class="inline-flex items-center justify-center px-6 py-3 bg-tertiary-container text-on-tertiary rounded-lg font-body-md text-body-md hover:bg-tertiary transition-colors duration-300"
+        href="#work"
+      >
+        View Projects
+      </a>
+      <a
+        class="nav-button inline-flex items-center justify-center px-6 py-3 border border-outline text-on-surface rounded-lg font-body-md text-body-md hover:bg-surface-container-low transition-colors duration-300"
+        href="/resume"
+      >
+        About Me
+      </a>
+    </div>
+  </div>
+</section>
+<!-- Selected Work Grid -->
+<section class="pt-12 border-t border-outline/20" id="work">
+  <div class="flex justify-between items-end mb-12">
+    <h2 class="font-headline-md text-headline-md text-primary">
+      Selected Work
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter" id="projects-grid">
+      <% projects.forEach((project, index) => { %>
+        <!-- Add 'md:mt-16' to odd indices to preserve the staggered visual layout -->
+        <a
+          class="nav-button group block relative overflow-hidden rounded-xl border border-outline/20 bg-surface-container-lowest hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 <%= index % 2 !== 0 ? 'md:mt-16' : '' %>"
+          href="<%= project.hrefUrl %>"
+        >
+          <div class="aspect-[4/3] w-full overflow-hidden bg-surface-container">
+            <img
+              alt="<%= project.title %> Thumbnail"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              src="<%= project.pictureUrl %>"
+            />
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-headline-sm text-headline-sm text-primary">
+                <%= project.title %>
+              </h3>
+              <span
+                class="material-symbols-outlined text-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                north_east
+              </span>
+            </div>
+            <p class="font-body-md text-body-md text-secondary">
+              <%= project.description %>
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <% project.tags.forEach(tag => { %>
+                <span
+                  class="px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-caps text-[10px]"
+                >
+                  <%= tag %>
+                </span>
+              <% }) %>
+            </div>
+          </div>
+        </a>
+      <% }) %>
+    </div>
+</section>
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+</style>
