@@ -1,9 +1,29 @@
 [
   {
-    "hrefUrl": "/resume",
-    "picureUrl": "",
-    "title": "Test project",
-    "description": "A test",
-    "tags": ["YO!!"]
+    "hrefUrl": "https://www.squadfinder76.com",
+    "pictureUrl": "/pictures/SquadFinder76.png",
+    "title": "SquadFinder76",
+    "description": "A (mostly) vibe coded social media web app for a videogame I play. Over 30 Registered users.",
+    "tags": [
+      "Database Integration",
+      "Local-Host (Cloudflare Tunnel)",
+      "Auth",
+      "WebSockets",
+      "Caching"
+    ]
+  },
+  {
+    "hrefUrl": "https://github.com/John-Harms/CodebaseScanner",
+    "pictureUrl": "/pictures/CodeBaseScanner.png",
+    "title": "CodebaseScanner",
+    "description": "An app I've been developing to generate efficient codebase context files for chatting with AI.",
+    "tags": ["Python", "Tools", "AI", "Token-Efficiency", "Cost-Savings"]
+  },
+  {
+    "hrefUrl": "https:tutor.harmswhey.com",
+    "pictureUrl": "/pictures/AdaptiveTutor.png",
+    "title": "AdaptiveTutor",
+    "description": "A RAG study app I made to better help learn large blocks of content..",
+    "tags": ["SPA", "Tools", "AI", "RAG", "Learning"]
   }
 ]

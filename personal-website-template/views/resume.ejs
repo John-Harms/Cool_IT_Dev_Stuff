@@ -1,190 +1,433 @@
-<!-- Resume Content Card (Inner Body Content Only) -->
-<main
-  class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap"
->
-  <!-- Intro Section -->
-  <section class="mb-section-gap max-w-2xl animate-[fadeInUp_1s_ease-out]">
-    <h1 class="font-display-lg text-display-lg text-primary mb-gutter">
-      Resume
-    </h1>
-    <p class="font-body-lg text-body-lg text-secondary">
-      A methodical approach to design. I focus on creating systems that scale,
-      interfaces that are intuitive, and experiences that feel serene. With over
-      a decade of experience, my work bridges the gap between complex
-      functionality and minimal aesthetics.
-    </p>
-  </section>
-  <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-    <!-- Main Content Column (Experience) -->
-    <div
-      class="md:col-span-8 space-y-gutter animate-[fadeInUp_1s_ease-out_0.2s_both]"
+
+  <body class="bg-opacity-40 min-h-screen text-on-surface">
+    <!-- Resume Content Card (Inner Body Content Only) -->
+    <main
+      class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-gutter bg-surface-container-lowest bg-opacity-40 backdrop-blur-sm border border-outline-variant/30 rounded-xl shadow-sm my-8 animate-[fadeInUp_1s_ease-out]"
     >
-      <h2
-        class="font-headline-md text-headline-md text-primary border-b border-outline/20 pb-unit"
+      <!-- Header Section -->
+      <header
+        class="mb-gutter pb-gutter border-b border-outline/20 text-center md:text-left"
       >
-        Experience
-      </h2>
-      <!-- Experience Item 1 -->
-      <article
-        class="group relative pl-gutter border-l border-outline/20 hover:border-tertiary-container transition-colors duration-300 py-unit"
-      >
+        <h1 class="font-display-lg text-display-lg text-primary mb-unit">
+          John Harms
+        </h1>
         <div
-          class="absolute -left-[5px] top-4 w-[9px] h-[9px] rounded-full bg-surface-container-lowest border-2 border-outline/20 group-hover:border-tertiary-container transition-colors duration-300"
-        ></div>
-        <div
-          class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-unit"
+          class="font-body-md text-body-md text-secondary mb-gutter flex flex-col md:flex-row md:flex-wrap gap-2 md:gap-4 md:items-center"
         >
-          <h3 class="font-headline-sm text-headline-sm text-primary">
-            Lead Product Designer
-          </h3>
-          <span
-            class="font-label-caps text-label-caps text-secondary mt-1 md:mt-0"
-            >2021 — Present</span
+          <span class="hidden md:inline text-outline-variant">|</span>
+          <a
+            class="hover:text-primary transition-colors"
+            href="mailto:Johnharms0404@gmail.com"
+            >Johnharms0404@gmail.com</a
+          >
+          <span class="hidden md:inline text-outline-variant">|</span>
+          <span class="">319-559-0515</span>
+          <span class="hidden md:inline text-outline-variant">|</span>
+          <span class=""
+            >Website:
+            <a
+              class="hover:text-primary transition-colors hover:underline"
+              href="http://www.harmswhey.com"
+              >www.harmswhey.com</a
+            ></span
           >
         </div>
-        <h4 class="font-body-md text-body-md text-on-surface-variant mb-unit">
-          Acme Corp
-        </h4>
-        <p class="font-body-md text-body-md text-secondary">
-          Led the redesign of the core enterprise platform, improving user
-          retention by 24%. Established and maintained the global design system.
-          Managed a team of four product designers.
-        </p>
-      </article>
-      <!-- Experience Item 2 -->
-      <article
-        class="group relative pl-gutter border-l border-outline/20 hover:border-tertiary-container transition-colors duration-300 py-unit"
-      >
-        <div
-          class="absolute -left-[5px] top-4 w-[9px] h-[9px] rounded-full bg-surface-container-lowest border-2 border-outline/20 group-hover:border-tertiary-container transition-colors duration-300"
-        ></div>
-        <div
-          class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-unit"
-        >
-          <h3 class="font-headline-sm text-headline-sm text-primary">
-            Senior Interface Designer
-          </h3>
-          <span
-            class="font-label-caps text-label-caps text-secondary mt-1 md:mt-0"
-            >2018 — 2021</span
-          >
+        <div class="mb-unit">
+          <h2 class="font-label-caps text-label-caps text-outline mb-2">
+            OBJECTIVE STATEMENT
+          </h2>
+          <p class="font-body-lg text-body-lg text-primary max-w-4xl">
+            Driven by growth, high standards, and bringing out the best in the
+            people around me. Passionate about solving technical and analytical
+            challenges while motivated to be helpful in any capacity.
+          </p>
         </div>
-        <h4 class="font-body-md text-body-md text-on-surface-variant mb-unit">
-          Global Tech Solutions
-        </h4>
-        <p class="font-body-md text-body-md text-secondary">
-          Designed responsive web applications for financial services clients.
-          Collaborated closely with engineering teams to ensure pixel-perfect
-          implementation and robust accessibility compliance.
-        </p>
-      </article>
-      <!-- Experience Item 3 -->
-      <article
-        class="group relative pl-gutter border-l border-outline/20 hover:border-tertiary-container transition-colors duration-300 py-unit"
-      >
-        <div
-          class="absolute -left-[5px] top-4 w-[9px] h-[9px] rounded-full bg-surface-container-lowest border-2 border-outline/20 group-hover:border-tertiary-container transition-colors duration-300"
-        ></div>
-        <div
-          class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-unit"
-        >
-          <h3 class="font-headline-sm text-headline-sm text-primary">
-            UX Designer
-          </h3>
-          <span
-            class="font-label-caps text-label-caps text-secondary mt-1 md:mt-0"
-            >2015 — 2018</span
+      </header>
+      <div class="space-y-gutter">
+        <!-- Technical Skills Section -->
+        <section class="animate-[fadeInUp_1s_ease-out_0.1s_both]">
+          <h2
+            class="font-headline-md text-headline-md text-primary border-b border-outline/20 pb-unit mb-gutter"
           >
-        </div>
-        <h4 class="font-body-md text-body-md text-on-surface-variant mb-unit">
-          Creative Agency Alpha
-        </h4>
-        <p class="font-body-md text-body-md text-secondary">
-          Conducted user research and created wireframes, prototypes, and final
-          visual designs for various e-commerce and marketing websites.
-        </p>
-      </article>
-    </div>
-    <!-- Sidebar Column (Capabilities & Education) -->
-    <div
-      class="md:col-span-4 space-y-section-gap mt-section-gap md:mt-0 animate-[fadeInUp_1s_ease-out_0.4s_both]"
-    >
-      <!-- Capabilities Block -->
-      <div
-        class="p-gutter bg-surface-container-low rounded-xl backdrop-blur-sm border border-outline/10 shadow-[0_10px_30px_rgba(30,41,59,0.04)]"
-      >
-        <h2 class="font-headline-md text-headline-md text-primary mb-gutter">
-          Capabilities
-        </h2>
-        <ul class="space-y-4">
-          <li class="flex items-center gap-unit text-secondary">
-            <span class="material-symbols-outlined text-[20px] font-light"
-              >design_services</span
+            Technical Skills
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-gutter gap-y-4">
+            <div
+              class="p-4 bg-surface-container-low rounded-lg border border-outline/10"
             >
-            <span class="font-body-md text-body-md">Product Design</span>
-          </li>
-          <li class="flex items-center gap-unit text-secondary">
-            <span class="material-symbols-outlined text-[20px] font-light"
-              >view_quilt</span
+              <h3
+                class="font-body-md text-body-md text-primary font-medium mb-1"
+              >
+                Systems &amp; Architecture
+              </h3>
+              <p class="font-body-md text-body-md text-secondary">
+                Object-Oriented Programming (OOP), Model-View-Controller (MVC)
+                Architecture, Routing &amp; Web App Infrastructure, Salesforce
+                SFRA Framework (Conceptual)
+              </p>
+            </div>
+            <div
+              class="p-4 bg-surface-container-low rounded-lg border border-outline/10"
             >
-            <span class="font-body-md text-body-md">Design Systems</span>
-          </li>
-          <li class="flex items-center gap-unit text-secondary">
-            <span class="material-symbols-outlined text-[20px] font-light"
-              >touch_app</span
+              <h3
+                class="font-body-md text-body-md text-primary font-medium mb-1"
+              >
+                AI &amp; Automation Integration
+              </h3>
+              <p class="font-body-md text-body-md text-secondary">
+                AI Systems Integration, Retrieval-Augmented Generation (RAG)
+                Architecture, API Interaction &amp; Implementation
+              </p>
+            </div>
+            <div
+              class="p-4 bg-surface-container-low rounded-lg border border-outline/10"
             >
-            <span class="font-body-md text-body-md">Interaction Design</span>
-          </li>
-          <li class="flex items-center gap-unit text-secondary">
-            <span class="material-symbols-outlined text-[20px] font-light"
-              >search</span
+              <h3
+                class="font-body-md text-body-md text-primary font-medium mb-1"
+              >
+                Cloud &amp; Network Security
+              </h3>
+              <p class="font-body-md text-body-md text-secondary">
+                Cloudflare Zero Trust, VPN Infrastructure, Cloud Networking
+                Concepts
+              </p>
+            </div>
+            <div
+              class="p-4 bg-surface-container-low rounded-lg border border-outline/10"
             >
-            <span class="font-body-md text-body-md">User Research</span>
-          </li>
-          <li class="flex items-center gap-unit text-secondary">
-            <span class="material-symbols-outlined text-[20px] font-light"
-              >code</span
+              <h3
+                class="font-body-md text-body-md text-primary font-medium mb-1"
+              >
+                Data Analysis &amp; Tools
+              </h3>
+              <p class="font-body-md text-body-md text-secondary">
+                Advanced Excel (Proficient), Data Manipulation &amp;
+                Visualization Concepts (pandas, matplotlib, openPyxl)
+              </p>
+            </div>
+            <div
+              class="p-4 bg-surface-container-low rounded-lg border border-outline/10"
             >
-            <span class="font-body-md text-body-md"
-              >Prototyping (Framer, HTML/CSS)</span
+              <h3
+                class="font-body-md text-body-md text-primary font-medium mb-1"
+              >
+                Development Tools &amp; Frameworks
+              </h3>
+              <p class="font-body-md text-body-md text-secondary">
+                GitHub (Version Control), React Native (Familiarity), Middleware
+                Development Concepts
+              </p>
+            </div>
+            <div
+              class="p-4 bg-surface-container-low rounded-lg border border-outline/10"
             >
-          </li>
-        </ul>
-      </div>
-      <!-- Education Block -->
-      <div>
-        <h2
-          class="font-headline-md text-headline-md text-primary mb-gutter border-b border-outline/20 pb-unit"
-        >
-          Education
-        </h2>
-        <div class="space-y-4">
-          <div>
-            <h3 class="font-body-lg text-body-lg text-primary font-medium">
-              BFA Graphic Design
-            </h3>
-            <p class="font-body-md text-body-md text-secondary">
-              University of Design Arts
-            </p>
-            <span
-              class="font-label-caps text-label-caps text-outline block mt-1"
-              >2011 — 2015</span
-            >
+              <h3
+                class="font-body-md text-body-md text-primary font-medium mb-1"
+              >
+                Familiar Languages (Conceptual/Reading)
+              </h3>
+              <p class="font-body-md text-body-md text-secondary">
+                Python, JavaScript, C#
+              </p>
+            </div>
           </div>
-        </div>
+        </section>
+        <!-- Experience Section -->
+        <section class="animate-[fadeInUp_1s_ease-out_0.4s_both]">
+          <h2
+            class="font-headline-md text-headline-md text-primary border-b border-outline/20 pb-unit mb-gutter"
+          >
+            Projects
+          </h2>
+          <div class="mb-4">
+            <a
+              class="font-body-md text-body-md text-primary hover:underline flex items-center gap-unit mb-4 w-fit"
+              href="https://github.com/John-Harms"
+            >
+              <span class="material-symbols-outlined text-[20px]">link</span>
+              Link to GitHub: https://github.com/John-Harms
+            </a>
+            <ul
+              class="list-disc list-inside font-body-md text-body-md text-secondary space-y-2"
+            >
+              <li class="">
+                Various projects developed for personal automation, AI
+                workflows, or practice and learning.
+              </li>
+              <li class="">
+                Primarily backend development and minimal GUI apps built on js
+                and node.js, dotnet and ASPNET, and python.
+              </li>
+              <li class="">
+                RAG based agentic learning tool, TutorBot, is self hosted on my
+                site and demonstrates current AI and backend skills.
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="animate-[fadeInUp_1s_ease-out_0.2s_both]">
+          <h2
+            class="font-headline-md text-headline-md text-primary border-b border-outline/20 pb-unit mb-gutter"
+          >
+            Experience
+          </h2>
+          <div class="space-y-6">
+            <article
+              class="group relative pl-gutter border-l border-outline/20 hover:border-tertiary-container transition-colors duration-300"
+            >
+              <div
+                class="absolute -left-[5px] top-2 w-[9px] h-[9px] rounded-full bg-surface-container-lowest border-2 border-outline/20 group-hover:border-tertiary-container transition-colors duration-300"
+              ></div>
+              <div
+                class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-1"
+              >
+                <h3 class="font-headline-sm text-headline-sm text-primary">
+                  Facilities Intern
+                </h3>
+                <span
+                  class="font-label-caps text-label-caps text-secondary mt-1 md:mt-0"
+                  >Summer 2026 - Current</span
+                >
+              </div>
+              <h4
+                class="font-body-md text-body-md text-on-surface-variant mb-2"
+              >
+                Walser Automotive Group | Bloomington, MN
+              </h4>
+              <ul
+                class="list-disc list-inside font-body-md text-body-md text-secondary space-y-1"
+              >
+                <li class="">
+                  Working with 8+ enterprise management SaaS apps.
+                </li>
+                <li class="">
+                  Learning escalation skills and timely IT issue resolution.
+                </li>
+              </ul>
+            </article>
+            <article
+              class="group relative pl-gutter border-l border-outline/20 hover:border-tertiary-container transition-colors duration-300"
+            >
+              <div
+                class="absolute -left-[5px] top-2 w-[9px] h-[9px] rounded-full bg-surface-container-lowest border-2 border-outline/20 group-hover:border-tertiary-container transition-colors duration-300"
+              ></div>
+              <div
+                class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-1"
+              >
+                <h3 class="font-headline-sm text-headline-sm text-primary">
+                  FedEx Ground Delivery Driver
+                </h3>
+                <span
+                  class="font-label-caps text-label-caps text-secondary mt-1 md:mt-0"
+                  >Fall 2025 - Summer 2026</span
+                >
+              </div>
+              <h4
+                class="font-body-md text-body-md text-on-surface-variant mb-2"
+              >
+                Kessel Runners | Duluth, MN
+              </h4>
+              <ul
+                class="list-disc list-inside font-body-md text-body-md text-secondary space-y-1"
+              >
+                <li class="">
+                  Executed routes require safe operation of a delivery truck and
+                  strict attention to detail.
+                </li>
+                <li class="">
+                  Continuously optimize various factors daily to increase
+                  delivery efficiency.
+                </li>
+              </ul>
+            </article>
+            <article
+              class="group relative pl-gutter border-l border-outline/20 hover:border-tertiary-container transition-colors duration-300"
+            >
+              <div
+                class="absolute -left-[5px] top-2 w-[9px] h-[9px] rounded-full bg-surface-container-lowest border-2 border-outline/20 group-hover:border-tertiary-container transition-colors duration-300"
+              ></div>
+              <div
+                class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-1"
+              >
+                <h3 class="font-headline-sm text-headline-sm text-primary">
+                  Acute Care Pharmacy Technician
+                </h3>
+                <span
+                  class="font-label-caps text-label-caps text-secondary mt-1 md:mt-0"
+                  >Fall 2024 - Summer 2026</span
+                >
+              </div>
+              <h4
+                class="font-body-md text-body-md text-on-surface-variant mb-2"
+              >
+                Aspirus St. Luke's | Duluth, MN
+              </h4>
+              <ul
+                class="list-disc list-inside font-body-md text-body-md text-secondary space-y-1"
+              >
+                <li class="">
+                  Over 100 Times Daily: Dispense medication with strict
+                  attention to detail.
+                </li>
+                <li class="">
+                  Over 40 Times Daily: Communicate with various kinds of
+                  individuals to troubleshoot issues.
+                </li>
+              </ul>
+            </article>
+            <article
+              class="group relative pl-gutter border-l border-outline/20 hover:border-tertiary-container transition-colors duration-300"
+            >
+              <div
+                class="absolute -left-[5px] top-2 w-[9px] h-[9px] rounded-full bg-surface-container-lowest border-2 border-outline/20 group-hover:border-tertiary-container transition-colors duration-300"
+              ></div>
+              <div
+                class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-1"
+              >
+                <h3 class="font-headline-sm text-headline-sm text-primary">
+                  Facilities Intern
+                </h3>
+                <span
+                  class="font-label-caps text-label-caps text-secondary mt-1 md:mt-0"
+                  >Spring 2025 – Fall 2025</span
+                >
+              </div>
+              <h4
+                class="font-body-md text-body-md text-on-surface-variant mb-2"
+              >
+                Twin Cities Orthopedics | Woodbury, MN
+              </h4>
+              <ul
+                class="list-disc list-inside font-body-md text-body-md text-secondary space-y-1"
+              >
+                <li class="">
+                  Performed door remodeling and furniture removal (Multiple
+                  times weekly)
+                </li>
+                <li class="">
+                  Created program that digitalized facilities employee reporting
+                  and monitoring (Daily Project)
+                </li>
+              </ul>
+            </article>
+            <article
+              class="group relative pl-gutter border-l border-outline/20 hover:border-tertiary-container transition-colors duration-300"
+            >
+              <div
+                class="absolute -left-[5px] top-2 w-[9px] h-[9px] rounded-full bg-surface-container-lowest border-2 border-outline/20 group-hover:border-tertiary-container transition-colors duration-300"
+              ></div>
+              <div
+                class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-1"
+              >
+                <h3 class="font-headline-sm text-headline-sm text-primary">
+                  Line Cook
+                </h3>
+                <span
+                  class="font-label-caps text-label-caps text-secondary mt-1 md:mt-0"
+                  >Spring 2021 - Fall 2024</span
+                >
+              </div>
+              <h4
+                class="font-body-md text-body-md text-on-surface-variant mb-2"
+              >
+                Heidi’s Huggamug Cafe | Lake City, MN
+              </h4>
+              <ul
+                class="list-disc list-inside font-body-md text-body-md text-secondary space-y-1"
+              >
+                <li class="">
+                  Learned how to handle tough criticism and time management in a
+                  fast-paced environment.
+                </li>
+              </ul>
+            </article>
+          </div>
+        </section>
+        <!-- Education Section -->
+        <section class="animate-[fadeInUp_1s_ease-out_0.3s_both]">
+          <h2
+            class="font-headline-md text-headline-md text-primary border-b border-outline/20 pb-unit mb-gutter"
+          >
+            Education
+          </h2>
+          <div>
+            <div
+              class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-1"
+            >
+              <h3 class="font-headline-sm text-headline-sm text-primary">
+                Bachelor of Business Administration
+              </h3>
+              <span
+                class="font-label-caps text-label-caps text-secondary mt-1 md:mt-0"
+                >Summer/Fall 2026 (Projected)</span
+              >
+            </div>
+            <h4 class="font-body-lg text-body-lg text-primary font-medium mb-1">
+              Management Information Science (Major)
+            </h4>
+            <p class="font-body-md text-body-md text-secondary">
+              University of Minnesota Duluth | Duluth, MN
+            </p>
+          </div>
+        </section>
+        <!-- Projects Section -->
+
+        <!-- Certifications & Honors Section -->
+        <section class="animate-[fadeInUp_1s_ease-out_0.5s_both]">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+            <div>
+              <h2
+                class="font-headline-md text-headline-md text-primary border-b border-outline/20 pb-unit mb-gutter"
+              >
+                Certifications
+              </h2>
+              <div class="space-y-2">
+                <div
+                  class="flex flex-col md:flex-row md:items-baseline md:justify-between"
+                >
+                  <h3
+                    class="font-body-md text-body-md text-primary font-medium"
+                  >
+                    Lean Six Sigma Green Belt (Level 1)
+                  </h3>
+                  <span
+                    class="font-label-caps text-label-caps text-outline mt-1 md:mt-0"
+                    >August 2024</span
+                  >
+                </div>
+                <p class="font-body-md text-body-md text-secondary">
+                  Council For Six Sigma Certification | Cert. #: aN35FCIB1v
+                </p>
+              </div>
+            </div>
+            <div>
+              <h2
+                class="font-headline-md text-headline-md text-primary border-b border-outline/20 pb-unit mb-gutter"
+              >
+                Honors
+              </h2>
+              <div class="space-y-2">
+                <div
+                  class="flex flex-col md:flex-row md:items-baseline md:justify-between"
+                >
+                  <h3
+                    class="font-body-md text-body-md text-primary font-medium"
+                  >
+                    National Honor Society
+                  </h3>
+                  <span
+                    class="font-label-caps text-label-caps text-outline mt-1 md:mt-0"
+                    >Spring 2019 - Spring 2023</span
+                  >
+                </div>
+                <p class="font-body-md text-body-md text-secondary">
+                  Lake City, MN
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-    </div>
-  </div>
-</main>
-<style>
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>
+    </main>
+  </body>
+</html>

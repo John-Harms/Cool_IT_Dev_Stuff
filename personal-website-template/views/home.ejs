@@ -25,24 +25,30 @@
   </div>
 </section>
 <!-- Selected Work Grid -->
-<section class="pt-12 border-t border-outline/20" id="work">
-  <div class="flex justify-between items-end mb-12">
-    <h2 class="font-headline-md text-headline-md text-primary">
-      Selected Work
+<section class="pt-12 scroll-mt-24" id="work">
+      <h2 class="font-headline-md text-headline-md text-primary underline decoration-2 underline-offset-4 decoration-outline/30 mb-2">
+      Selected Projects
     </h2>
+  <div class="flex justify-between items-end mb-12">
+
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter" id="projects-grid">
       <% projects.forEach((project, index) => { %>
         <!-- Add 'md:mt-16' to odd indices to preserve the staggered visual layout -->
         <a
-          class="nav-button group block relative overflow-hidden rounded-xl border border-outline/20 bg-surface-container-lowest hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 <%= index % 2 !== 0 ? 'md:mt-16' : '' %>"
+          class="group block relative overflow-hidden rounded-xl border border-outline/20 bg-surface-container-lowest hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
           href="<%= project.hrefUrl %>"
+          target="_blank"
         >
-          <div class="aspect-[4/3] w-full overflow-hidden bg-surface-container">
+          <div class="aspect-[4/3] w-full overflow-hidden bg-surface-container flex items-center justify-center">
             <img
               alt="<%= project.title %> Thumbnail"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              width="390"
+              height="390"
+              class="w-auto h-full max-w-full max-h-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105"
               src="<%= project.pictureUrl %>"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div class="p-6">
